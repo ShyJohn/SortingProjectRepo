@@ -8,12 +8,11 @@ void Application::Init()
 	bubbleButton = std::make_unique<Button>("res/BubbleButton.png", sf::Vector2f(160.0f, 40.0f));
 	insertionButton = std::make_unique<Button>("res/InsertionButton.png", sf::Vector2f(280.0f, 40.0f));
 	quickSortButton = std::make_unique<Button>("res/QuickSortButton.png", sf::Vector2f(400.0f, 40.0f));
-
 	// CREATE SORTER POINTERS
 	bubbleSorter = std::make_shared<BubbleSorter>();
 	insertionSorter = std::make_shared<InsertionSorter>();
 	quickSorter = std::make_shared<QuickSorter>();
-
+	
 	// INIT CAMERA
 	camera.reset(sf::FloatRect(window.getSize().x, window.getSize().y, window.getSize().x, window.getSize().y));
 	camera.setCenter(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
@@ -70,7 +69,7 @@ void Application::Update()
 	}
 	else if (currentSortState == QUICKSORT)
 	{
-		if (quickSorter->Sort(line, NUM_OF_LINES))
+		if (quickSorter->Sort(line, quickSorter->lower, quickSorter->upper))
 		{
 			currentSortState = NONE;
 		}
