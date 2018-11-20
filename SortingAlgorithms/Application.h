@@ -6,13 +6,14 @@
 #include <algorithm>
 #include <iostream>
 #include <memory>
-
+#include <Windows.h>
 #include "Button.h"
 #include "Helpers.h"
 #include "BubbleSort.h"
 #include "InsertionSort.h"
+#include "QuickSort.h"
 
-enum CurrentSortState{BUBBLE, INSERTION, NONE};
+enum CurrentSortState{BUBBLE, INSERTION, QUICKSORT, NONE};
 class Application {
 
 private: 
@@ -38,11 +39,13 @@ private:
 	// SORTERS
 	std::shared_ptr<BubbleSorter> bubbleSorter;
 	std::shared_ptr<InsertionSorter> insertionSorter;
+	std::shared_ptr<QuickSorter> quickSorter;
 
 	// UI
 	std::unique_ptr<Button> resetButton;
 	std::unique_ptr<Button> bubbleButton;
 	std::unique_ptr<Button> insertionButton;
+	std::unique_ptr<Button> quickSortButton;
 
 	// HELPERS
 	Helpers helpers;

@@ -7,9 +7,6 @@
 class SortAlgorithm
 {
 
-protected:
-	
-
 public:
 	SortAlgorithm() {}
 	~SortAlgorithm() {}

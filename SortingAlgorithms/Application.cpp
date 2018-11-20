@@ -7,10 +7,12 @@ void Application::Init()
 	resetButton = std::make_unique<Button>("res/ResetButton.png", sf::Vector2f(40.0f, 40.0f));
 	bubbleButton = std::make_unique<Button>("res/BubbleButton.png", sf::Vector2f(160.0f, 40.0f));
 	insertionButton = std::make_unique<Button>("res/InsertionButton.png", sf::Vector2f(280.0f, 40.0f));
+	quickSortButton = std::make_unique<Button>("res/QuickSortButton.png", sf::Vector2f(400.0f, 40.0f));
 
 	// CREATE SORTER POINTERS
 	bubbleSorter = std::make_shared<BubbleSorter>();
 	insertionSorter = std::make_shared<InsertionSorter>();
+	quickSorter = std::make_shared<QuickSorter>();
 
 	// INIT CAMERA
 	camera.reset(sf::FloatRect(window.getSize().x, window.getSize().y, window.getSize().x, window.getSize().y));
@@ -45,6 +47,8 @@ void Application::Init()
 
 void Application::Update()
 {
+	//Sleep(500);
+
 	// STATE MACHINE
 	if (currentSortState == BUBBLE)
 	{
@@ -60,6 +64,13 @@ void Application::Update()
 		// SORT ARRAY
 		// IF SORTED, CHANGE STATE TO IDLE
 		if (insertionSorter->Sort(line))
+		{
+			currentSortState = NONE;
+		}
+	}
+	else if (currentSortState == QUICKSORT)
+	{
+		if (quickSorter->Sort(line, NUM_OF_LINES))
 		{
 			currentSortState = NONE;
 		}
@@ -103,6 +114,8 @@ void Application::Render()
 	window.draw(*resetButton);
 	window.draw(*bubbleButton);
 	window.draw(*insertionButton);
+	window.draw(*quickSortButton);
+
 	
 	// DISPLAY ON SCREEN
 	window.display();
@@ -149,6 +162,19 @@ void Application::HandleInput()
 			helpers.mouseClicked = true;
 			insertionSorter->counter = 0;
 			currentSortState = INSERTION;
+		}
+	}
+
+	// IF MOUSE OVER QUICK SORT BUTTON..
+	else if (quickSortButton->Hover(window))
+	{
+		// IF MOUSE CLICKED,
+		// SET STATE MACHINE TO IDLE
+		// SHUFFLE ARRAY
+		if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && !helpers.mouseClicked)
+		{
+			helpers.mouseClicked = true;
+			currentSortState = QUICKSORT;
 		}
 	}
 

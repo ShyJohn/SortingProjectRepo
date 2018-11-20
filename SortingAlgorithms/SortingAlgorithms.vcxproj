@@ -143,6 +143,7 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Helpers.h" />
     <ClInclude Include="InsertionSort.h" />
+    <ClInclude Include="QuickSort.h" />
     <ClInclude Include="SortAlgorithm.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
