@@ -39,7 +39,6 @@ void Application::Init()
 	threadText.setFont(font);
 	threadText.setString("Threads:");
 	threadText.setPosition(1220.0f, 40.0f);
-
 	threadNumber.setFont(font);
 	threadNumber.setPosition(1350.0f, 40.0f);
 
@@ -50,11 +49,11 @@ void Application::Init()
 	
 	//bubbleStarted = std::make_shared<bool>();
 	//insertionStarted = std::make_shared<bool>();
-
 	bubbleStarted = false;
 	insertionStarted = false;
 	numberOfThreads = 8;
 	numberOfThreads2 = 1;
+
 	// INIT CAMERA
 	camera.reset(sf::FloatRect(window.getSize().x, window.getSize().y, window.getSize().x, window.getSize().y));
 	camera.setCenter(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
@@ -82,12 +81,6 @@ void Application::Init()
 		line2[i].setPosition(sf::Vector2f(i * LINE_WIDTH, (window.getSize().y / 2)));
 	}
 
-	/*for (int i = 0; i < numberOfThreads; i++)
-	{
-		std::thread t;
-		bubbleThreads.push_back(t);
-	}
-	*/
 	// FIRST SHUFFLE
 	ShuffleArray();
 
@@ -112,9 +105,6 @@ void Application::Update()
 			std::thread bubbleThread(&Application::BubbleSort, this, line, 0, NUM_OF_LINES);
 			bubbleThread.join();
 		}
-		
-		//std::thread bubbleThread(&Application::BubbleSort, this, 0, NUM_OF_LINES);
-		//bubbleThread.join();
 
 		for (int i = 0; i < numberOfThreads2; i++)
 		{
@@ -126,13 +116,6 @@ void Application::Update()
 			bubbleThread.join();
 		}
 
-		//BubbleSort();
-		
-		//for(int i = 0; i < numberOfThreads; i++)
-		//	bubbleThreads[i] = std::thread(&Application::BubbleSort, this);
-
-		//for(int i = 0 ; i < numberOfThreads; i++)
-		//	bubbleThreads[i].join();
 	}
 
 	if(insertionStarted)
@@ -141,8 +124,6 @@ void Application::Update()
 		// IF SORTED, CHANGE STATE TO IDLE
 		std::thread insertionThread(&Application::InsertionSort, this);
 		insertionThread.join();
-
-		//InsertionSort();
 	}
 	else if (currentSortState == QUICKSORT)
 	{
@@ -153,9 +134,9 @@ void Application::Update()
 		}*/
 	}
 	
-	std::stringstream s;
-	s << numberOfThreads;
-	threadNumber.setString(s.str().c_str());
+	//std::stringstream s;
+	//s << numberOfThreads;
+	//threadNumber.setString(s.str().c_str());
 
 	// HANDLE ALL INPUT IN FUNCTION
 	HandleInput();
