@@ -8,11 +8,11 @@ public:
 	BubbleSorter() {}
 	~BubbleSorter() {}
 
-	bool Sort(sf::RectangleShape* line)
+	bool Sort(sf::RectangleShape* line, int rangeStart, int rangeEnd)
 	{
 		int numOfSwaps = 0;
 
-		for (int i = 0; i < NUM_OF_LINES - 1; i++)
+		for (int i = rangeStart; i < rangeEnd - 1; i++)
 		{
 			if (line[i].getSize().y > line[i + 1].getSize().y)
 			{

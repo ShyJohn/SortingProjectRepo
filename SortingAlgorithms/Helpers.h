@@ -2,7 +2,7 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics.hpp>
 
-#define NUM_OF_LINES 500
+#define NUM_OF_LINES 400
 #define LINE_WIDTH 3
 
 class Helpers
