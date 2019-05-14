@@ -4,6 +4,7 @@
 class InsertionSorter : public SortAlgorithm
 
 {
+
 public:
 	InsertionSorter() {
 		counter = 0;
