@@ -5,13 +5,14 @@
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
 //#include <SFML/Graphics.hpp>
-#include <TGUI/TGUI.hpp>
+//#include <TGUI/TGUI.hpp>
 
 // C++ includes
 #include <algorithm>
 #include <iostream>
 #include <memory>
-#include <Windows.h>
+//#include <Windows.h>
+
 #include <thread>
 #include <sstream>
 
@@ -35,7 +36,7 @@ private:
 	void ToggleButton(bool &s);
 	bool CheckBubbleFinished();
 
-	LPVOID mainFiber;
+	//LPVOID mainFiber;
 
 	// CAMERA
 	sf::View camera;

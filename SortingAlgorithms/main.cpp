@@ -3,7 +3,7 @@
 
 int main()
 {
-	srand(time(NULL));
+	//srand(time(NULL));
 	sf::RenderWindow window(sf::VideoMode(1600, 900), "Application", sf::Style::Default);
 
 	Application app(window);
