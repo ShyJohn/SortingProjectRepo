@@ -67,11 +67,14 @@ void Application::Init()
 		positions2[i] = i * LINE_WIDTH;
 	}
 
+	sf::Color colour(255, 255, 255);
+
 	// CREATE LINE SHAPES AND PUT INTO ARRAY
 	for (int i = 0; i < NUM_OF_LINES; i++)
 	{
 		line[i] = sf::RectangleShape(sf::Vector2f(LINE_WIDTH, i));
 		line2[i] = sf::RectangleShape(sf::Vector2f(LINE_WIDTH, i));
+		line[i].setOutlineColor(colour);
 	}
 	
 	// INITIALISE LINE POSITIONS
@@ -104,6 +107,7 @@ void Application::Update()
 
 			std::thread bubbleThread(&Application::BubbleSort, this, line, 0, NUM_OF_LINES);
 			bubbleThread.join();
+
 		}
 
 		for (int i = 0; i < numberOfThreads2; i++)
