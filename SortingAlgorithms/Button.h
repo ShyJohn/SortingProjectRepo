@@ -19,6 +19,7 @@ public:
 
 	~Button() {};
 	sf::Texture tex;
+
 	bool Hover(sf::Window &w)
 	{
 		float wx = sf::Mouse::getPosition(w).x;
