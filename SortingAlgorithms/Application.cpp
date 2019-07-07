@@ -30,12 +30,12 @@ void Application::Init()
 	}
 
 	// INITIALISE UI
-	resetButton = std::make_unique<Button>("res/ResetButton.png", sf::Vector2f(1510.0f, 10.0f));
-	bubbleButton = std::make_unique<Button>("res/BubbleButton.png", sf::Vector2f(1510.0f, 60.0f));
-	insertionButton = std::make_unique<Button>("res/InsertionButton.png", sf::Vector2f(1510.0f, 110.0f));
-	quickSortButton = std::make_unique<Button>("res/QuickSortButton.png", sf::Vector2f(1510.0f, 160.0f));
-	addThreadButton = std::make_unique<Button>("res/AddButton.png", sf::Vector2f(1400.0f, 20.0f));
-	minusThreadButton = std::make_unique<Button>("res/MinusButton.png", sf::Vector2f(1400.0f, 70.0f));
+	Button* resetButton = new Button("res/ResetButton.png", sf::Vector2f(1510.0f, 10.0f));
+	Button* bubbleButton = new Button("res/BubbleButton.png", sf::Vector2f(1510.0f, 60.0f));
+	Button* insertionButton = new Button("res/InsertionButton.png", sf::Vector2f(1510.0f, 110.0f));
+	Button* quickSortButton = new Button("res/QuickSortButton.png", sf::Vector2f(1510.0f, 160.0f));
+	Button* addThreadButton = new Button("res/AddButton.png", sf::Vector2f(1400.0f, 20.0f));
+	Button* minusThreadButton = new Button("res/MinusButton.png", sf::Vector2f(1400.0f, 70.0f));
 	threadText.setFont(font);
 	threadText.setString("Threads:");
 	threadText.setPosition(1220.0f, 40.0f);
@@ -58,7 +58,7 @@ void Application::Init()
 	camera.reset(sf::FloatRect(window.getSize().x, window.getSize().y, window.getSize().x, window.getSize().y));
 	camera.setCenter(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
 
-	mainFiber = ConvertThreadToFiber(NULL);
+	//mainFiber = ConvertThreadToFiber(NULL);
 	
 	// GIVE POSITIONS TO POSITION ARRAY
 	for (int i = 0; i < NUM_OF_LINES; i++)
@@ -138,9 +138,9 @@ void Application::Update()
 		}*/
 	}
 	
-	std::stringstream s;
-	s << numberOfThreads;
-	threadNumber.setString(s.str().c_str());
+	//std::stringstream s;
+	//s << numberOfThreads;
+	//threadNumber.setString(s.str().c_str());
 
 	// HANDLE ALL INPUT IN FUNCTION
 	HandleInput();
